@@ -39,7 +39,7 @@ public class CorrentistaController {
 
     }
     
-    public int CriaContaTitulares(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha){
+    public long CriaContaTitulares(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha){
         
         ContaController c = new ContaController();
         

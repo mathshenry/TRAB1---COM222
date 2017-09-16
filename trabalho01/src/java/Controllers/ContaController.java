@@ -33,7 +33,7 @@ public class ContaController {
         }
     }
 
-    public int cadastraConta(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha) throws SQLException {
+    public long cadastraConta(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha) throws SQLException {
         inicializaJdbc();
 
         stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
@@ -43,7 +43,7 @@ public class ContaController {
         res = stm.executeQuery("SELECT * FROM conta WHERE Primeiro_Corr = '" + Primeiro_Corr + "' and senha = '" + senha + "'");
 
         while (res.next()) {
-            return res.getInt("Numero");
+            return res.getLong("Numero");
         }
         return 0;
     }
@@ -74,7 +74,7 @@ public class ContaController {
 
     }
 
-    public double SaldoConta(int Conta) {
+    public double SaldoConta(long Conta) {
         inicializaJdbc();
 
         ResultSet res = null;
@@ -100,7 +100,7 @@ public class ContaController {
 
     }
 
-    public double LimiteConta(double Conta) {
+    public double LimiteConta(long Conta) {
         inicializaJdbc();
 
         ResultSet res = null;
@@ -125,14 +125,14 @@ public class ContaController {
         return 0;
     }
 
-    public void atualizaSaldo(double Saldo, int Conta) throws SQLException {
+    public void atualizaSaldo(double Saldo, long Conta) throws SQLException {
         inicializaJdbc();
 
         stm.execute("UPDATE conta SET saldo = " + df.format(Saldo) + " where Numero = " + Conta);
 
     }
     
-    public void atualizaLimite(double Saldo, int Conta) throws SQLException {
+    public void atualizaLimite(double Saldo, long Conta) throws SQLException {
         inicializaJdbc();
 
         stm.execute("UPDATE conta SET saldo = " + df.format(Saldo) + " where Numero = " + Conta);
