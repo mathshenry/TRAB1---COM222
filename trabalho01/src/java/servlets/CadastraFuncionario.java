@@ -47,7 +47,7 @@ public class CadastraFuncionario extends HttpServlet {
                 out.println("<body>");
                 out.println("<h3><center> O " + nome + " foi cadastrado com sucesso!"
                         + " Seu numero de acesso é: <b>" + codigo + "</b><center></h3>");
-                out.println("<input type=\"button\" value=\"Acesso para Funcionários\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('adm/inicio.jsp');\">");
                 out.println("</body>");
                 out.println("</html>");
             }else{
@@ -55,10 +55,11 @@ public class CadastraFuncionario extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Erro ao cadastrar funcionário!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("Algo ocorreu de errado no cadastro, tente novamente!");
-                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("<p>Algo ocorreu de errado no cadastro, tente novamente!</p>");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('adm/inicio.jsp');\">");
                 out.println("</body>");
                 out.println("</html>");
             }

@@ -58,9 +58,10 @@ public class CadastraConta extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Erro ao cadastrar conta!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("Algo ocorreu de errado no cadastro, tente novamente!");
+                out.println("<p>Algo ocorreu de errado no cadastro, tente novamente!</p>");
                 out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('LoginADMServlet');\">");
                 out.println("</body>");
                 out.println("</html>");

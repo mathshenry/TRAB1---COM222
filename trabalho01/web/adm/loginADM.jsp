@@ -13,7 +13,7 @@
         <p><center> Seja bem-vindo(a)!</center></p>
 
 
-<form id="formulario" method="post" action="../loginFuncServlet">
+<form id="formulario" method="post" action="../LoginADMServlet">
     <fieldset id="acesso">
         <legend>LOGIN:</legend>
         <p> Usuário: <input type="text" name="usuario" placeholder="1234"> </p> 

@@ -177,7 +177,7 @@ public class DatabaseController {
         stm.execute("INSERT into funcionario (Nome, Email, Funcao, senha) values ('" + nome + "','" + email + "','" + funcao + "','" + senha + "')");
 
         ResultSet res = null;
-        res = stm.executeQuery("SELECT * FROM funcionario WHERE Email = '" + email + "' and senha = '" + senha + "'");
+        res = stm.executeQuery("SELECT * FROM funcionario WHERE Nome = '"+nome+"' and Email = '" + email + "' and senha = '" + senha + "'");
 
         while (res.next()) {
             return res.getInt("Codigo");

@@ -25,8 +25,7 @@ public class LoginADMServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("adm/inicio.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("adm/inicio.jsp");
         }
     }
     
@@ -43,16 +42,16 @@ public class LoginADMServlet extends HttpServlet {
             FuncionarioController funcionarioController = new FuncionarioController();
 
             if (funcionarioController.isUsuarioValido(usuario, senha)) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("adm/inicio.jsp");
-                dispatcher.forward(request, response);
+                response.sendRedirect("adm/inicio.jsp");
             } else {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Acesso inválido!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("A conta/senha não é válida!<br>");
+                out.println("<p>A conta/senha não é válida!</p><br>");
                 out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('adm/loginADM.jsp');\">");
                 out.println("</body>");
                 out.println("</html>");

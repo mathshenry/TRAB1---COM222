@@ -50,6 +50,7 @@ public class CadastraCorrentista extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Erro ao cadastrar Correntista!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h3><center> O " + nome + " não foi cadastrado!<br><br>");
