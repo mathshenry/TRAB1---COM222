@@ -21,18 +21,44 @@ public class DatabaseController {
 
     private static void inicializaJdbc() {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             Connection c = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/javabank", "root", "");
             stm = c.createStatement();
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
+    
+    public static boolean isCorrentistaValido(String cpf) throws SQLException{
+        inicializaJdbc();
+        ResultSet res = null;
+        res = stm.executeQuery("SELECT * FROM correntista WHERE CPF = '" + cpf + "'");
+            while (res.next()) {
+                // Retorna True se existir conta com a senha informada.
+                return true;
+            }
+            return false;
+    }
 
     public static long cadastraConta(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha) throws SQLException {
         inicializaJdbc();
-
-        stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
-                + Primeiro_Corr + "','" + Segundo_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+        if (!Segundo_Corr.equals("") && !Terceiro_Corr.equals("")) {
+            stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
+                    + Primeiro_Corr + "','" + Segundo_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+        }else{
+            if(!Segundo_Corr.equals("")){
+                stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Saldo, Limite, senha) values ('"
+                    + Primeiro_Corr + "','" + Segundo_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+            }else{
+                if(!Terceiro_Corr.equals("")){
+                    stm.execute("INSERT into conta (Primeiro_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
+                    + Primeiro_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+                }else{
+                    stm.execute("INSERT into conta (Primeiro_Corr, Saldo, Limite, senha) values ('"
+                    + Primeiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+                }
+            }
+        }
 
         ResultSet res = null;
         res = stm.executeQuery("SELECT * FROM conta WHERE Primeiro_Corr = '" + Primeiro_Corr + "' and senha = '" + senha + "'");
@@ -42,10 +68,10 @@ public class DatabaseController {
                 return res.getLong("Numero");
             }
         }
-        return 0;
+        return -1;
     }
-    
-    public static boolean isContaValida(long conta){
+
+    public static boolean isContaValida(long conta) {
         inicializaJdbc();
 
         ResultSet res = null;
@@ -82,7 +108,7 @@ public class DatabaseController {
     public static double getSaldoConta(long Conta) {
         inicializaJdbc();
 
-        ResultSet res = null;        
+        ResultSet res = null;
 
         try {
             res = stm.executeQuery("SELECT * FROM conta WHERE Numero = '" + Conta + "'");
@@ -131,11 +157,17 @@ public class DatabaseController {
         stm.execute("UPDATE conta SET saldo = " + DF.format(Saldo) + " where Numero = " + Conta);
     }
 
-    public static void cadastraCorrentista(String CPF, String Nome, String Endereco, String Email) throws SQLException {
+    public static boolean cadastraCorrentista(String CPF, String Nome, String Endereco, String Email) throws SQLException {
         inicializaJdbc();
 
-        stm.execute("INSERT into correntista (CPF, Nome, Endereco, Email) values ('"
-                + CPF + "','" + Nome + "','" + Endereco + "','" + Email + "')");
+        try {
+            stm.execute("INSERT into correntista (CPF, Nome, Endereco, Email) values ('"
+                    + CPF + "','" + Nome + "','" + Endereco + "','" + Email + "')");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
     }
 
@@ -151,7 +183,7 @@ public class DatabaseController {
             return res.getInt("Codigo");
         }
 
-        return 0;
+        return -1;
     }
 
     public static boolean isUsuarioValido(String usuario, String senha) throws SQLException {
@@ -165,7 +197,7 @@ public class DatabaseController {
         }
         return false;
     }
-    
+
     public static void registraTransacao(String tipo, long Nro_Conta, long Nro_Conta_Transf, double Valor) throws SQLException {
         inicializaJdbc();
 

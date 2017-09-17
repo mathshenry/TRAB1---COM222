@@ -22,82 +22,55 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CadastraFuncionario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
-     */
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int codigo = 0;
-        
+
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String funcao = request.getParameter("funcao");
         String senha = request.getParameter("senha");
 
-        try {
-            FuncionarioController fc = new FuncionarioController();
-            codigo = fc.cadastraFuncionario(nome, email, senha, funcao);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastraFuncionario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            FuncionarioController fc = new FuncionarioController();
+            codigo = fc.cadastraFuncionario(nome, email, senha, funcao);
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Funcionário Cadastrado com sucesso!</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h3><center> O " + nome + " foi cadastrado com sucesso!"
-                    + " Seu numero de acesso é: <b>"+ codigo +"</b><center></h3>");
-            out.println("</body>");
-            out.println("</html>");
-            
+            if (codigo != -1) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Funcionário Cadastrado com sucesso!</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h3><center> O " + nome + " foi cadastrado com sucesso!"
+                        + " Seu numero de acesso é: <b>" + codigo + "</b><center></h3>");
+                out.println("<input type=\"button\" value=\"Acesso para Funcionários\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("</body>");
+                out.println("</html>");
+            }else{
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Erro ao cadastrar funcionário!</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("Algo ocorreu de errado no cadastro, tente novamente!");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("</body>");
+                out.println("</html>");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

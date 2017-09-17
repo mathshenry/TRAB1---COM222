@@ -4,9 +4,33 @@
         <servlet-name>CadastraFuncionario</servlet-name>
         <servlet-class>servlets.CadastraFuncionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginADMServlet</servlet-name>
+        <servlet-class>servlets.LoginADMServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastraCorrentista</servlet-name>
+        <servlet-class>servlets.CadastraCorrentista</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastraConta</servlet-name>
+        <servlet-class>servlets.CadastraConta</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CadastraConta</servlet-name>
+        <url-pattern>/CadastraConta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastraCorrentista</servlet-name>
+        <url-pattern>/CadastraCorrentista</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastraFuncionario</servlet-name>
         <url-pattern>/CadastraFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginADMServlet</servlet-name>
+        <url-pattern>/LoginADMServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

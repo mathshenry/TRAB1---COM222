@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import Controllers.ContaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,17 +31,42 @@ public class CadastraConta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        ContaController contaController = new ContaController();
+        String correntista1 = request.getParameter("correntista1");
+        String correntista2 = request.getParameter("correntista2");
+        String correntista3 = request.getParameter("correntista3");
+        Double saldo = Double.valueOf(request.getParameter("saldo"));
+        Double limite = Double.valueOf(request.getParameter("limite"));
+        String senha = request.getParameter("senha");
+        long codigo;
         try (PrintWriter out = response.getWriter()) {
+            codigo = contaController.cadastraConta(correntista1, correntista2, correntista3, saldo, limite, senha);
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CadastraConta</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CadastraConta at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            if (codigo != -1) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Conta Cadastrada com sucesso!</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("Conta cadastrada com sucesso! <br> O número da conta é: <b>" + codigo+ "</b><br>");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('adm/inicio.jsp');\">");
+                out.println("</body>");
+                out.println("</html>");
+            } else {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Erro ao cadastrar conta!</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("Algo ocorreu de errado no cadastro, tente novamente!");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("</body>");
+                out.println("</html>");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

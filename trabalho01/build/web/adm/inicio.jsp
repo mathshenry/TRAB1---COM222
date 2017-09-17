@@ -21,10 +21,16 @@
             </center>
         </fieldset>
         <br>
+        <fieldset><legend><h2>Gestão de Contas</h2></legend>
+            <center>
+                <input type="button" value="Cadastrar Conta" onclick="window.location.replace('adm/FormCadastraConta.jsp');">
+            </center>
+        </fieldset>
+        <br>
         <fieldset><legend><h2>Gestão de Transações</h2></legend>
             <center>
-                <input type="button" value="Saques" onclick="window.location.replace('FormCadastroFuncionario.jsp');">
-                <input type="button" value="Depósitos" onclick="window.location.replace('FormCadastroCliente.jsp');">
+                <input type="button" value="Saques" onclick="window.location.replace('adm/FormCadastroFuncionario.jsp');">
+                <input type="button" value="Depósitos" onclick="window.location.replace('adm/FormCadastroCliente.jsp');">
                 <input type="button" value="Pagamentos de contas" onclick="window.location.replace('adm/loginADM.jsp');">
                 <input type="button" value="Transferências" onclick="window.location.replace('adm/loginADM.jsp');">
             </center>

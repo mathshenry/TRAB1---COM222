@@ -14,8 +14,12 @@ import utils.DatabaseController;
  */
 public class CorrentistaController {
    
-    public void cadastraCorrentista(String CPF, String Nome, String Endereco, String Email) throws SQLException {
-        DatabaseController.cadastraCorrentista(CPF, Nome, Endereco, Email);
+    public boolean cadastraCorrentista(String CPF, String Nome, String Endereco, String Email) throws SQLException {
+        return DatabaseController.cadastraCorrentista(CPF, Nome, Endereco, Email);
+    }
+    
+    public boolean isCorrentistaValido(String cpf) throws SQLException{
+        return DatabaseController.isCorrentistaValido(cpf);
     }
       
 }
