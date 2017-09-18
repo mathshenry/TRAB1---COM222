@@ -15,10 +15,10 @@
     <body>
         <div id="log"></div>
         <h1><center>DEPÓSITO</center></h1>
-        <form method="post" action="../RealizaDeposito">
+        <form id="formulario1" method="post" action="../RealizaDeposito">
             <center>
-            <p> Conta para crédito: <input type="number" name="conta" required="required"></p>
-            <p> Valor: <input type="number" name="valor" required="required"></p>
+            <p> Conta para crédito <input type="number" name="conta" required="required"></p>
+            <p> Valor <input type="text" name="valor" required="required"></p>
             <input type="submit" value="Efetuar Depósito">
             </center>
         </form>        

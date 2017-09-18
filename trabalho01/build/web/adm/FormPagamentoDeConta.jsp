@@ -15,11 +15,11 @@
     <body>
         <div id="log"></div>
         <h1><center>PAGAMENTO DE CONTA</center></h1>
-        <form method="post" action="../PagamentoDeConta">
+        <form id="formulario1" method="post" action="../PagamentoDeConta">
             <center>
             <p> Conta para débito <input type="number" name="conta" required="required"></p>
             <p> Senha <input type="password" name="senha" required="required"></p>
-            <p> Valor: <input type="number" name="valor" required="required"></p>
+            <p> Valor <input type="text" name="valor" required="required"></p>
             <input type="submit" value="Efetuar Pagamento">
             </center>
         </form>        

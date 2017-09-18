@@ -58,7 +58,7 @@ public final class FormPagamentoDeConta_jsp extends org.apache.jasper.runtime.Ht
       out.write("            <center>\r\n");
       out.write("            <p> Conta para débito <input type=\"number\" name=\"conta\" required=\"required\"></p>\r\n");
       out.write("            <p> Senha <input type=\"password\" name=\"senha\" required=\"required\"></p>\r\n");
-      out.write("            <p> Valor: <input type=\"number\" name=\"valor\" required=\"required\"></p>\r\n");
+      out.write("            <p> Valor: <input type=\"text\" name=\"valor\" required=\"required\"></p>\r\n");
       out.write("            <input type=\"submit\" value=\"Efetuar Pagamento\">\r\n");
       out.write("            </center>\r\n");
       out.write("        </form>        \r\n");

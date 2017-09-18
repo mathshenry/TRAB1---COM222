@@ -15,11 +15,11 @@
     <body>
         <div id="log"></div>
         <h1><center>TRANFERENCIA</center></h1>
-        <form method="post" action="../RealizaTransferenciaCliente">
+        <form id="formulario1" method="post" action="../RealizaTransferenciaCliente">
             <center>
             <p> Senha <input type="password" name="senha" required="required"><br></p>
-            <p> Conta para crédito: <input type="number" name="contaCredito" required="required"></p>
-            <p> Valor: <input type="number" name="valor" required="required"></p>
+            <p> Conta para crédito <input type="number" name="contaCredito" required="required"></p>
+            <p> Valor <input type="text" name="valor" required="required"></p>
             <input type="submit" value="Efetuar Transferência">
             </center>
         </form>        

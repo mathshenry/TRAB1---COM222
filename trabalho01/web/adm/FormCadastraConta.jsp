@@ -15,16 +15,16 @@
     <body>
         <div id="log"></div>
         <h1><center>CADASTRAR NOVA CONTA</center></h1>
-        <form method="post" action="../CadastraConta">
-            <center>
+        <form id="formulario1" method="post" action="../CadastraConta">
+
             <p> CPF Correntista 1: <input type="text" name="correntista1" required="required"></p>
             <p> CPF Correntista 2: <input type="text" name="correntista2" ></p>
             <p> CPF Correntista 3: <input type="text" name="correntista3" ></p>
-            <p> Saldo inicial: <input type="number" name="saldo" required="required"></p>
-            <p> Limite: <input type="number" name="limite" required="required"></p>
+            <p> Saldo inicial: <input type="text" name="saldo" required="required"></p>
+            <p> Limite: <input type="text" name="limite" required="required"></p>
             <p> Senha: <input type="password" name="senha" required="required"></p>
             <input type="submit" value="Efetuar Cadastro">
-            </center>
+
         </form>        
     </body>
 </html>

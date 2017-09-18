@@ -42,8 +42,6 @@ public final class FormRealizaSaque_jsp extends org.apache.jasper.runtime.HttpJs
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
@@ -54,11 +52,11 @@ public final class FormRealizaSaque_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("    <body>\r\n");
       out.write("        <div id=\"log\"></div>\r\n");
       out.write("        <h1><center>SAQUE</center></h1>\r\n");
-      out.write("        <form id=\"formulario\" method=\"post\" action=\"../RealizaSaque\">\r\n");
+      out.write("        <form id=\"formulario1\" method=\"post\" action=\"../RealizaSaque\">\r\n");
       out.write("            <center>\r\n");
-      out.write("            <p> Conta para débito: <input type=\"number\" name=\"conta\" required=\"required\"></p>\r\n");
+      out.write("            <p> Conta para débito <input type=\"number\" name=\"conta\" required=\"required\"></p>\r\n");
       out.write("            <p> Senha <input type=\"password\" name=\"senha\" required=\"required\"></p>\r\n");
-      out.write("            <p> Valor: <input type=\"number\" name=\"valor\" required=\"required\"></p>\r\n");
+      out.write("            <p> Valor <input type=\"text\" name=\"valor\" required=\"required\"></p>\r\n");
       out.write("            <input type=\"submit\" value=\"Efetuar Saque\">\r\n");
       out.write("            </center>\r\n");
       out.write("        </form>        \r\n");

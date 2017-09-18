@@ -15,7 +15,7 @@
     <body>
         <div id="log"></div>
         <h1><center>CONSULTAR EXTRATO</center></h1>
-        <form method="post" action="../ConsultaExtrato">
+        <form id="formulario1" method="post" action="../ConsultaExtrato">
             <center>
             <p> Conta para consulta: <input type="number" name="conta" required="required"></p>
             <input type="submit" value="Efetuar Consulta">

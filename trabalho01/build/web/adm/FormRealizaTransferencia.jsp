@@ -1,9 +1,3 @@
-<%-- 
-    Document   : FormRealizaSaque
-    Created on : 17-Sep-2017, 20:14:19
-    Author     : maths
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,12 +9,12 @@
     <body>
         <div id="log"></div>
         <h1><center>TRANSFERÊNCIA</center></h1>
-        <form method="post" action="../RealizaTransferencia">
+        <form id="formulario1" method="post" action="../RealizaTransferencia">
             <center>
-            <p> Conta para débito: <input type="number" name="conta" required="required"></p>
+            <p> Conta para débito <input type="number" name="conta" required="required"></p>
             <p> Senha <input type="password" name="senha" required="required"><br></p>
-            <p> Conta para crédito: <input type="number" name="contaCredito" required="required"></p>
-            <p> Valor: <input type="number" name="valor" required="required"></p>
+            <p> Conta para crédito <input type="number" name="contaCredito" required="required"></p>
+            <p> Valor <input type="text" name="valor" required="required"></p>
             <input type="submit" value="Efetuar Transferência">
             </center>
         </form>        
