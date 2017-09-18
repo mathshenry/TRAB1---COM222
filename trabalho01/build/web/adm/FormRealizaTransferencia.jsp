@@ -13,7 +13,8 @@
         <title>Realizar Transferência</title>
     </head>
     <body>
-        <h1><center>Transferência</center></h1>
+        <div id="log"></div>
+        <h1><center>TRANSFERÊNCIA</center></h1>
         <form method="post" action="../RealizaTransferencia">
             <center>
             <p> Conta para débito: <input type="number" name="conta" required="required"></p>

@@ -13,7 +13,8 @@
         <title>Realizar Depósito</title>
     </head>
     <body>
-        <h1><center>Depósito</center></h1>
+        <div id="log"></div>
+        <h1><center>DEPÓSITO</center></h1>
         <form method="post" action="../RealizaDeposito">
             <center>
             <p> Conta para crédito: <input type="number" name="conta" required="required"></p>

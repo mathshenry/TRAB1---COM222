@@ -13,7 +13,8 @@
         <title>Cadastrar nova conta</title>
     </head>
     <body>
-        <h1><center>Cadastrar nova conta:</center></h1>
+        <div id="log"></div>
+        <h1><center>CADASTRAR NOVA CONTA</center></h1>
         <form method="post" action="../CadastraConta">
             <center>
             <p> CPF Correntista 1: <input type="text" name="correntista1" required="required"></p>

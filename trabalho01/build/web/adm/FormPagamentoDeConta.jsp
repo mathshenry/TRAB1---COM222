@@ -13,7 +13,8 @@
         <title>Realizar Pagamento de Conta</title>
     </head>
     <body>
-        <h1><center>Pagamento de Conta</center></h1>
+        <div id="log"></div>
+        <h1><center>PAGAMENTO DE CONTA</center></h1>
         <form method="post" action="../PagamentoDeConta">
             <center>
             <p> Conta para débito <input type="number" name="conta" required="required"></p>

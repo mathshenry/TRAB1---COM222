@@ -13,7 +13,8 @@
         <title>Realizar Saque</title>
     </head>
     <body>
-        <h1><center>Saque:</center></h1>
+        <div id="log"></div>
+        <h1><center>SAQUE</center></h1>
         <form method="post" action="../RealizaSaque">
             <center>
             <p> Conta para débito: <input type="number" name="conta" required="required"></p>

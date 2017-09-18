@@ -8,6 +8,7 @@
         <title>Home Banking</title>
     </head>
     <body>
+        <div id="log"></div>
         <h1><center>Home Banking</center></h1>
         <p><center> Seja bem-vindo(a)!</center></p>
 </br>

@@ -13,7 +13,8 @@
         <title>Consultar Saldo</title>
     </head>
     <body>
-        <h1><center>Consultar Saldo</center></h1>
+        <div id="log"></div>
+        <h1><center>CONSULTAR SALDO</center></h1>
         <form method="post" action="../ConsultaSaldo">
             <center>
             <p> Conta para consulta: <input type="number" name="conta" required="required"></p>

@@ -13,7 +13,8 @@
         <title>Consultar Extrato</title>
     </head>
     <body>
-        <h1><center>Consultar Extrato</center></h1>
+        <div id="log"></div>
+        <h1><center>CONSULTAR EXTRATO</center></h1>
         <form method="post" action="../ConsultaExtrato">
             <center>
             <p> Conta para consulta: <input type="number" name="conta" required="required"></p>
