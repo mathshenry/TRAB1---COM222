@@ -12,9 +12,9 @@
         <p><center> Seja bem-vindo(a)!</center></p>
 </br>
         <p><center><h3>Login:</h3></center></p>
-        <form>
-            <p><center>Conta: <input type="text" placeholder="1234"> <center></center></p>
-            <p><center>Senha: <input type="password"> <center></center></p>
+<form method="post" action="LoginCliente">
+            <p><center>Conta: <input type="text"  name="usuario" placeholder="1234" required="required"> <center></center></p>
+            <p><center>Senha: <input name="senha" type="password" required="required"> <center></center></p>
             <p><center><input type="submit" value="Entrar"> <center></center></p>
         </form>
 </br>

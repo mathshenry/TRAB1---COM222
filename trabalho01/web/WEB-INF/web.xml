@@ -40,6 +40,22 @@
         <servlet-name>ConsultaExtrato</servlet-name>
         <servlet-class>servlets.ConsultaExtrato</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginCliente</servlet-name>
+        <servlet-class>servlets.LoginCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RealizaTransferenciaCliente</servlet-name>
+        <servlet-class>servlets.RealizaTransferenciaCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultaExtratoCliente</servlet-name>
+        <servlet-class>servlets.ConsultaExtratoCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultaSaldoCliente</servlet-name>
+        <servlet-class>servlets.ConsultaSaldoCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultaExtrato</servlet-name>
         <url-pattern>/ConsultaExtrato</url-pattern>
@@ -79,6 +95,22 @@
     <servlet-mapping>
         <servlet-name>LoginADMServlet</servlet-name>
         <url-pattern>/LoginADMServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginCliente</servlet-name>
+        <url-pattern>/LoginCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizaTransferenciaCliente</servlet-name>
+        <url-pattern>/RealizaTransferenciaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaExtratoCliente</servlet-name>
+        <url-pattern>/ConsultaExtratoCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaSaldoCliente</servlet-name>
+        <url-pattern>/ConsultaSaldoCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
