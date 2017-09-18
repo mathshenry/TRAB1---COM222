@@ -133,3 +133,8 @@ input[type=button]{
     height: 30px;
     font-weight: bold;
 }
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}

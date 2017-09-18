@@ -26,8 +26,12 @@ public class ContaController {
             return -1;
         }
     }
+    
+    public String getExtrato(long conta) throws SQLException{
+        return DatabaseController.getExtrato(conta);
+    }
 
-    public boolean isSenhaValida(int Conta, String Senha) {
+    public boolean isSenhaValida(long Conta, String Senha) {
         return DatabaseController.isSenhaValida(Conta, Senha);
     }
 

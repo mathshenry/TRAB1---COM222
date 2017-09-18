@@ -28,16 +28,16 @@ public class DatabaseController {
             System.out.println(ex);
         }
     }
-    
-    public static boolean isCorrentistaValido(String cpf) throws SQLException{
+
+    public static boolean isCorrentistaValido(String cpf) throws SQLException {
         inicializaJdbc();
         ResultSet res = null;
         res = stm.executeQuery("SELECT * FROM correntista WHERE CPF = '" + cpf + "'");
-            while (res.next()) {
-                // Retorna True se existir conta com a senha informada.
-                return true;
-            }
-            return false;
+        while (res.next()) {
+            // Retorna True se existir conta com a senha informada.
+            return true;
+        }
+        return false;
     }
 
     public static long cadastraConta(String Primeiro_Corr, String Segundo_Corr, String Terceiro_Corr, double saldo, double Limite, String senha) throws SQLException {
@@ -45,17 +45,17 @@ public class DatabaseController {
         if (!Segundo_Corr.equals("") && !Terceiro_Corr.equals("")) {
             stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
                     + Primeiro_Corr + "','" + Segundo_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
-        }else{
-            if(!Segundo_Corr.equals("")){
+        } else {
+            if (!Segundo_Corr.equals("")) {
                 stm.execute("INSERT into conta (Primeiro_Corr, Segundo_Corr, Saldo, Limite, senha) values ('"
-                    + Primeiro_Corr + "','" + Segundo_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
-            }else{
-                if(!Terceiro_Corr.equals("")){
+                        + Primeiro_Corr + "','" + Segundo_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+            } else {
+                if (!Terceiro_Corr.equals("")) {
                     stm.execute("INSERT into conta (Primeiro_Corr, Terceiro_Corr, Saldo, Limite, senha) values ('"
-                    + Primeiro_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
-                }else{
+                            + Primeiro_Corr + "','" + Terceiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+                } else {
                     stm.execute("INSERT into conta (Primeiro_Corr, Saldo, Limite, senha) values ('"
-                    + Primeiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
+                            + Primeiro_Corr + "','" + DF.format(saldo) + "','" + DF.format(Limite) + "','" + senha + "')");
                 }
             }
         }
@@ -177,7 +177,7 @@ public class DatabaseController {
         stm.execute("INSERT into funcionario (Nome, Email, Funcao, senha) values ('" + nome + "','" + email + "','" + funcao + "','" + senha + "')");
 
         ResultSet res = null;
-        res = stm.executeQuery("SELECT * FROM funcionario WHERE Nome = '"+nome+"' and Email = '" + email + "' and senha = '" + senha + "'");
+        res = stm.executeQuery("SELECT * FROM funcionario WHERE Nome = '" + nome + "' and Email = '" + email + "' and senha = '" + senha + "'");
 
         while (res.next()) {
             return res.getInt("Codigo");
@@ -201,9 +201,32 @@ public class DatabaseController {
     public static void registraTransacao(String tipo, long Nro_Conta, long Nro_Conta_Transf, double Valor) throws SQLException {
         inicializaJdbc();
 
-        stm.execute("INSERT into transacao (Tipo, Nro_Conta, Nro_Conta_Transfer, Valor) values ('"
-                + tipo + "','" + Nro_Conta + "','" + Nro_Conta_Transf + "','" + DF.format(Valor) + "')");
-
+        if (Nro_Conta_Transf != 0) {
+            stm.execute("INSERT into transacao (Tipo, Nro_Conta, Nro_Conta_Transf, Valor) values ('"
+                    + tipo + "','" + Nro_Conta + "','" + Nro_Conta_Transf + "','" + DF.format(Valor) + "')");
+        }else{
+            stm.execute("INSERT into transacao (Tipo, Nro_Conta, Valor) values ('"
+                    + tipo + "','" + Nro_Conta + "','" + DF.format(Valor) + "')");
+        }
+    }
+    
+    public static String getExtrato(long conta) throws SQLException{
+        inicializaJdbc();
+        String resultado = "<table><tr><th>Código</th><th>Tipo</th><th>Conta de Origem</th><th>Conta de Destino</th><th>Valor</th></tr>";
+        ResultSet res = null;
+        res = stm.executeQuery("SELECT * FROM transacao WHERE Nro_Conta = " + conta + " or Nro_Conta_Transf = '" + conta + "'");
+        if (res != null) {
+            while (res.next()) {
+                resultado += "<tr><td>"+res.getInt("Codigo")+"</td><td>"+res.getString("Tipo")+"</td><td>"+res.getLong("Nro_Conta")+"</td><td>"+res.getLong("Nro_Conta_Transf")+
+                        "</td><td>"+res.getDouble("Valor")+"</td></tr>";
+            }
+            resultado+="</table>";
+        }
+        
+        if(resultado.equals("")){
+            resultado = "Não há transações para esta conta!";
+        }
+        return resultado;
     }
 
 }

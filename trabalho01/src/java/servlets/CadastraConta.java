@@ -47,6 +47,7 @@ public class CadastraConta extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Conta Cadastrada com sucesso!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("Conta cadastrada com sucesso! <br> O número da conta é: <b>" + codigo+ "</b><br>");
@@ -62,7 +63,7 @@ public class CadastraConta extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<p>Algo ocorreu de errado no cadastro, tente novamente!</p>");
-                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('LoginADMServlet');\">");
+                out.println("<input type=\"button\" value=\"Voltar\" onclick=\"window.location.replace('adm/inicio.jsp');\">");
                 out.println("</body>");
                 out.println("</html>");
             }

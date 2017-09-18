@@ -15,10 +15,10 @@ import utils.DatabaseController;
  */
 public class TransacaoController {
     
-    public static final String TRANSFERENCIA = "transferencia";
+    public static final String TRANSFERENCIA = "transf";
     public static final String SAQUE = "saque";
     public static final String DEPOSITO = "deposito";
-    public static final String PAGAMENTODECONTA = "pagamento de conta";
+    public static final String PAGAMENTODECONTA = "pagto";
 
     public void registraTransacao(String tipo, long Nro_Conta, long Nro_Conta_Transf, double Valor) throws SQLException {
         DatabaseController.registraTransacao(tipo, Nro_Conta, Nro_Conta_Transf, Valor);
@@ -37,7 +37,31 @@ public class TransacaoController {
                     registraTransacao(SAQUE, conta, 0, valor);
                     return true;
                 } catch (Exception e) {
-                    System.out.println(Arrays.toString(e.getStackTrace()));
+                    e.printStackTrace();
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean realizaPagamentoDeConta(long conta, double valor) {
+
+        ContaController c = new ContaController();
+        if (c.isContaValida(conta)) {
+            double saldoCliente = c.getSaldoConta(conta);
+            double limiteDisponivel = c.getLimiteConta(conta);
+
+            if (valor <= (saldoCliente + limiteDisponivel)) {
+                try {
+                    c.setSaldo((saldoCliente - valor), conta);
+                    registraTransacao(PAGAMENTODECONTA, conta, 0, valor);
+                    return true;
+                } catch (Exception e) {
+                    e.printStackTrace();
                     return false;
                 }
             } else {
@@ -73,7 +97,7 @@ public class TransacaoController {
             if(contaController.isContaValida(contaOrigem) && contaController.isContaValida(contaDestino)){
                 double saldoOrigem = contaController.getSaldoConta(contaOrigem);
                 double saldoDestino = contaController.getSaldoConta(contaDestino);
-                if(saldoOrigem+valor > saldoOrigem+contaController.getLimiteConta(contaOrigem)){
+                if(valor < saldoOrigem+contaController.getLimiteConta(contaOrigem)){
                     contaController.setSaldo(saldoOrigem-valor, contaOrigem);
                     contaController.setSaldo(saldoDestino+valor, contaDestino);
                     registraTransacao(TRANSFERENCIA, contaOrigem, contaDestino, valor);
@@ -84,7 +108,6 @@ public class TransacaoController {
             }else{
                 return false;
             }
-            
         }catch(Exception e){
             e.printStackTrace();
             return false;

@@ -16,6 +16,54 @@
         <servlet-name>CadastraConta</servlet-name>
         <servlet-class>servlets.CadastraConta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RealizaSaque</servlet-name>
+        <servlet-class>servlets.RealizaSaque</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RealizaDeposito</servlet-name>
+        <servlet-class>servlets.RealizaDeposito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PagamentoDeConta</servlet-name>
+        <servlet-class>servlets.PagamentoDeConta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RealizaTransferencia</servlet-name>
+        <servlet-class>servlets.RealizaTransferencia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultaSaldo</servlet-name>
+        <servlet-class>servlets.ConsultaSaldo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultaExtrato</servlet-name>
+        <servlet-class>servlets.ConsultaExtrato</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultaExtrato</servlet-name>
+        <url-pattern>/ConsultaExtrato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaSaldo</servlet-name>
+        <url-pattern>/ConsultaSaldo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizaTransferencia</servlet-name>
+        <url-pattern>/RealizaTransferencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PagamentoDeConta</servlet-name>
+        <url-pattern>/PagamentoDeConta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizaDeposito</servlet-name>
+        <url-pattern>/RealizaDeposito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizaSaque</servlet-name>
+        <url-pattern>/RealizaSaque</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastraConta</servlet-name>
         <url-pattern>/CadastraConta</url-pattern>

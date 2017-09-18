@@ -43,6 +43,7 @@ public class CadastraFuncionario extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Funcionário Cadastrado com sucesso!</title>");
+                out.println("<link href=\"css/style.css\" rel='stylesheet' type='text/css' />");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h3><center> O " + nome + " foi cadastrado com sucesso!"

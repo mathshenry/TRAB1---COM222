@@ -31,17 +31,17 @@
         <br>
         <fieldset id="home"><legend><h2>Gestão de Transações</h2></legend>
             <center>
-                <input type="button" value="Saque" onclick="window.location.replace('FormCadastroFuncionario.jsp');">
-                <input type="button" value="Depósito" onclick="window.location.replace('FormCadastroCliente.jsp');">
-                <input type="button" value="Pagamento de contas" onclick="window.location.replace('loginADM.jsp');">
-                <input type="button" value="Transferência" onclick="window.location.replace('loginADM.jsp');">
+                <input type="button" value="Saque" onclick="window.location.replace('FormRealizaSaque.jsp');">
+                <input type="button" value="Depósito" onclick="window.location.replace('FormRealizaDeposito.jsp');">
+                <input type="button" value="Pagamento de contas" onclick="window.location.replace('FormPagamentoDeConta.jsp');">
+                <input type="button" value="Transferência" onclick="window.location.replace('FormRealizaTransferencia.jsp');">
             </center>
         </fieldset>
         <br>
         <fieldset id="home"><legend><h2>Gestão de Extratos</h2></legend>
             <center>
-                <input type="button" value="Saldo" onclick="window.location.replace('FormCadastroFuncionario.jsp');">
-                <input type="button" value="Extrato" onclick="window.location.replace('FormCadastroCliente.jsp');">
+                <input type="button" value="Saldo" onclick="window.location.replace('FormConsultaSaldo.jsp');">
+                <input type="button" value="Extrato" onclick="window.location.replace('FormExtrato.jsp');">
             </center>
         </fieldset>
     </body>
